@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-        S3_BUCKET: "codepipeline-ap-southeast-1-827760993296"
+        S3_BUCKET: "cloudfrontservice"
         BUILD_ENV: "prod"
         CLOUDFRONT_ID: "E1HCAN3QWMC3LP"
 phases:
