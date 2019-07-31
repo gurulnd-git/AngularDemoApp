@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@gurulnd-git 
-0
-0 0 gurulnd-git/ng5
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
-ng5/buildspec.yml
-@gurulnd-git gurulnd-git Update buildspec.yml
-4730f30 21 minutes ago
-34 lines (33 sloc)  961 Bytes
-    
 version: 0.2
 env:
   variables:
@@ -49,15 +31,3 @@ artifacts:
         - '**/*'
     discard-paths: yes
     base-directory: 'dist*'
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
