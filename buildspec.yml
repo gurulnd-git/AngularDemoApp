@@ -1,0 +1,63 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@gurulnd-git 
+0
+0 0 gurulnd-git/ng5
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
+ng5/buildspec.yml
+@gurulnd-git gurulnd-git Update buildspec.yml
+4730f30 21 minutes ago
+34 lines (33 sloc)  961 Bytes
+    
+version: 0.2
+env:
+  variables:
+        S3_BUCKET: "https://s3.console.aws.amazon.com/s3/buckets/codepipeline-ap-southeast-1-827760993296/Angular2"
+        BUILD_ENV: "prod"
+        CLOUDFRONT_ID: "E1HCAN3QWMC3LP"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - npm install
+      - npm install -g @angular/cli
+  build:
+    commands:
+      - ng build --${BUILD_ENV}
+  post_build:
+    commands:
+       # Clear S3 bucket.
+        - aws s3 rm s3://${S3_BUCKET} --recursive
+        - echo S3 bucket is cleared.
+        # Copy dist folder to S3 bucket
+        - aws s3 cp dist s3://${S3_BUCKET} --recursive
+        # STEP: Clear CloudFront cache.
+        - aws configure set preview.cloudfront true
+        - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+        - echo Build completed on `date`
+artifacts:
+    files:
+        - '**/*'
+    discard-paths: yes
+    base-directory: 'dist*'
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
