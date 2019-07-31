@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-        S3_BUCKET: "https://s3.console.aws.amazon.com/s3/buckets/codepipeline-ap-southeast-1-827760993296/Angular2"
+        S3_BUCKET: "codepipeline-ap-southeast-1-827760993296"
         BUILD_ENV: "prod"
         CLOUDFRONT_ID: "E1HCAN3QWMC3LP"
 phases:
